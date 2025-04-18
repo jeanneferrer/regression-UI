@@ -1,0 +1,32 @@
+{
+  "name": "regression-ui",
+  "version": "1.0.0",
+  "description": "For Yyanne and Svet's thesis entitled: \"Comparative Study on Regression Models on the Exact Time of Arrival of Delivering Perishable Goods\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode development",
+    "serve": "webpack serve --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeanneferrer/regression-UI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeanneferrer/regression-UI/issues"
+  },
+  "homepage": "https://github.com/jeanneferrer/regression-UI#readme",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "csv-loader": "^3.0.5",
+    "dotenv-webpack": "^8.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.5",
+    "webpack-cli": "^6.0.1",
+    "xml-loader": "^1.2.1"
+  }
+}

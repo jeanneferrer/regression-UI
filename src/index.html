@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Time Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Delivery Time Prediction</h1>
+        <div id="upload-area">
+            <h2>Upload Dataset (.csv)</h2>
+            <input type="file" id="fileUpload" accept=".csv"><br><br>
+            <button id="predictButton">Predict Delivery Times</button>
+        </div>
+        <div id="results-area">
+            <h2>Predictions:</h2>
+            <div id="predictions"></div>
+            <div id="error-message" class="error"></div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
