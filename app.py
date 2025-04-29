@@ -48,12 +48,27 @@ def update_column_name(df):
     df.rename(columns={'Weatherconditions':'Weather_conditions'},inplace=True)
 
 def extract_column_value(df):
-    # Extract time and convert to int (taking the first part of the split)
-    df['Time_taken(min)'] = df['Time_taken(min)'].apply(lambda x: int(x.split(' ')[0].strip('()min')))
-    # Extract Weather conditions
-    df['Weather_conditions'] = df['Weather_conditions'].apply(lambda x: x.split(' ')[1].strip())
-    # Extract city code from Delivery person ID
-    df['City_code']=df['Delivery_person_ID'].str.split("RES", expand=True)[0]
+    def safe_extract_time(x):
+        try:
+            if pd.isnull(x) or str(x).strip() == '':
+                return np.nan
+            # Remove '(min)' and strip whitespace, then convert
+            cleaned_x = str(x).replace('(min)', '').strip()
+            return int(cleaned_x)
+        except Exception:
+            return np.nan
+
+    def safe_extract_weather(x):
+        try:
+            if pd.isnull(x) or str(x).strip() == '':
+                return np.nan
+            return str(x).replace('conditions', '').strip()
+        except Exception:
+            return np.nan
+    
+    df['Time_taken(min)'] = df['Time_taken(min)'].apply(safe_extract_time)
+    df['Weather_conditions'] = df['Weatherconditions'].apply(safe_extract_weather)
+    df['City_code'] = df['Delivery_person_ID'].str.split("RES", expand=True)[0]
 
 def drop_columns(df):
     df.drop(['ID','Delivery_person_ID'],axis=1,inplace=True)
