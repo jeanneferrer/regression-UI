@@ -18,6 +18,21 @@ CORS(app)
 # Declare trained_model at the top (global scope)
 trained_model = None
 
+dummy_data = {
+            'ID': [1, 2], 'Delivery_person_ID': ['RES1', 'RES2'], 'Delivery_person_Age': [25, 30],
+            'Delivery_person_Ratings': [4.5, 4.8], 'Restaurant_latitude': [12.0, 12.1],
+            'Restaurant_longitude': [100.0, 100.1], 'Delivery_location_latitude': [12.2, 12.3],
+            'Delivery_location_longitude': [100.2, 100.3], 'Order_Date': ['04/16/2025', '04/16/2025'],
+            'Time_taken(min)': ['30 mins', '35 mins'], 'Weatherconditions': ['Sunny 24', 'Cloudy 22'],
+            'Road_traffic_density': ['Low', 'Medium'], 'Vehicle_condition': ['good', 'good'],
+            'Type_of_order': ['Snack', 'Meal'], 'Type_of_vehicle': ['motorcycle', 'scooter'],
+            'multiple_deliveries': [1, 2], 'Festival': ['No', 'No'], 'City': ['A', 'B']
+        }
+dummy_df = pd.DataFrame(dummy_data)
+dummy_df.to_csv('uploaded_dataset.csv', index=False)
+trained_model = train_model()
+os.remove('uploaded_dataset.csv')
+
 # Load the trained model (we'll train it once when the app starts)
 def train_model():
     df_train = pd.read_csv('uploaded_dataset.csv') # Placeholder, will be updated
@@ -173,20 +188,4 @@ def predict():
     return jsonify({'error': 'Invalid file format. Only .csv files are allowed'}), 400
 
 if __name__ == '__main__':
-    with app.app_context():
-        dummy_data = {
-            'ID': [1, 2], 'Delivery_person_ID': ['RES1', 'RES2'], 'Delivery_person_Age': [25, 30],
-            'Delivery_person_Ratings': [4.5, 4.8], 'Restaurant_latitude': [12.0, 12.1],
-            'Restaurant_longitude': [100.0, 100.1], 'Delivery_location_latitude': [12.2, 12.3],
-            'Delivery_location_longitude': [100.2, 100.3], 'Order_Date': ['04/16/2025', '04/16/2025'],
-            'Time_taken(min)': ['30 mins', '35 mins'], 'Weatherconditions': ['Sunny 24', 'Cloudy 22'],
-            'Road_traffic_density': ['Low', 'Medium'], 'Vehicle_condition': ['good', 'good'],
-            'Type_of_order': ['Snack', 'Meal'], 'Type_of_vehicle': ['motorcycle', 'scooter'],
-            'multiple_deliveries': [1, 2], 'Festival': ['No', 'No'], 'City': ['A', 'B']
-        }
-        dummy_df = pd.DataFrame(dummy_data)
-        dummy_df.to_csv('uploaded_dataset.csv', index=False)
-        trained_model = train_model()
-        os.remove('uploaded_dataset.csv')
-
     app.run(debug=True, port=5000) # Keep the backend on port 5000
