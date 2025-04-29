@@ -49,7 +49,7 @@ def update_column_name(df):
 
 def extract_column_value(df):
     # Extract time and convert to int (taking the first part of the split)
-    df['Time_taken(min)'] = df['Time_taken(min)'].apply(lambda x: int(x.split(' ')[0].strip()))
+    df['Time_taken(min)'] = df['Time_taken(min)'].apply(lambda x: int(x.split(' ')[0].strip('()min')))
     # Extract Weather conditions
     df['Weather_conditions'] = df['Weather_conditions'].apply(lambda x: x.split(' ')[1].strip())
     # Extract city code from Delivery person ID
