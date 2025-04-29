@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessageDiv.textContent = '';
 
         try {
-            const response = await fetch(`${process.env.BACKEND_URL}/predict`, { // Use environment variable
+            const response = await fetch(`${process.env.BACKEND_URL}/predict`, { // Use environment variable or http://127.0.0.1:5000
                 method: 'POST',
                 body: formData
             });
