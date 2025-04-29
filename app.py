@@ -38,7 +38,6 @@ def train_model():
     return model
 
 def download_file(url, filename):
-    """Downloads a file while handling SSL."""
     if not os.path.exists(filename):
         context = ssl.create_default_context(cafile=certifi.where())
         with urllib.request.urlopen(url, context=context) as response, open(filename, "wb") as out_file:

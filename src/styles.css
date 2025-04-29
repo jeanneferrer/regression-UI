@@ -20,7 +20,10 @@ h1, h2 {
 }
 
 #upload-area {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
     border: 2px dashed #ccc;
     border-radius: 6px;
@@ -32,7 +35,12 @@ h1, h2 {
     margin-bottom: 10px;
 }
 
-#predictButton {
+#file-upload {
+    display: flex;
+    justify-content: center;
+}
+
+#predict-button {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -42,7 +50,7 @@ h1, h2 {
     font-size: 16px;
 }
 
-#predictButton:hover {
+#predict-button:hover {
     background-color: #0056b3;
 }
 

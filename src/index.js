@@ -1,8 +1,8 @@
 import './styles.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const predictButton = document.getElementById('predictButton');
-    const fileUpload = document.getElementById('fileUpload');
+    const predictButton = document.getElementById('predict-button');
+    const fileUpload = document.getElementById('file-upload');
     const predictionsDiv = document.getElementById('predictions');
     const errorMessageDiv = document.getElementById('error-message');
 
