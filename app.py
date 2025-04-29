@@ -162,6 +162,9 @@ def index():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    global trained_model
+    if trained_model is None:
+        return jsonify({'error': 'Model is not trained yet.'}), 500
     if 'file' not in request.files:
         return jsonify({'error': 'No file part'}), 400
     file = request.files['file']
