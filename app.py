@@ -67,7 +67,7 @@ def extract_column_value(df):
             return np.nan
     
     df['Time_taken(min)'] = df['Time_taken(min)'].apply(safe_extract_time)
-    df['Weather_conditions'] = df['Weatherconditions'].apply(safe_extract_weather)
+    df['Weather_conditions'] = df['Weather_conditions'].apply(safe_extract_weather)
     df['City_code'] = df['Delivery_person_ID'].str.split("RES", expand=True)[0]
 
 def drop_columns(df):
